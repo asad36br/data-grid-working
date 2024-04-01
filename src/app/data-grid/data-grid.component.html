@@ -1,0 +1,46 @@
+<p-tabView>
+  <p-tabPanel
+    *ngFor="let requestType of filteredData | keyvalue"
+    [header]="requestType.key"
+  >
+    <dx-data-grid
+      [dataSource]="filteredData[requestType.key]"
+      [showBorders]="true"
+      [showRowLines]="true"
+      [allowColumnResizing]="true"
+    >
+      <!-- Define your grid columns here -->
+      <dxi-column
+        dataField="requestTypeName"
+        caption="Request Type"
+      ></dxi-column>
+      <dxi-column dataField="bookingSource" caption="Supplier"></dxi-column>
+      <dxi-column dataField="pnr" caption="Pnr"></dxi-column>
+      <dxi-column dataField="sector" caption="Trip"></dxi-column>
+      <dxi-column dataField="bookingAgencyId" caption="Booking Id"></dxi-column>
+      <dxi-column dataField="tktNo" caption="Ticket No"></dxi-column>
+      <dxi-column dataField="modifydate" caption="Request Time"></dxi-column>
+      <dxi-column
+        dataField="creationDate"
+        caption="Booking date"
+        dataType="date"
+        format="dd-MM-yyyy"
+      ></dxi-column>
+      <dxi-column
+        dataField="travelDate"
+        caption="Travel date"
+        dataType="date"
+        format="dd-MM-yyyy"
+      ></dxi-column>
+      <dxi-column dataField="passName" caption="Passenger Name"></dxi-column>
+      <dxi-column dataField="status" caption="Status"></dxi-column>
+      <dxi-column caption="Action" type="buttons" [width]="60">
+        <dxi-button
+          hint="Edit"
+          icon="edit"
+          (onClick)="onClickEditRequest($event)"
+        ></dxi-button>
+      </dxi-column>
+    </dx-data-grid>
+  </p-tabPanel>
+</p-tabView>
